@@ -13,15 +13,14 @@ import org.junit.Before;
 import org.junit.Rule;
 import org.junit.Test;
 import org.junit.runner.RunWith;
-import org.mockito.Mockito;
 import org.robolectric.RobolectricTestRunner;
 import org.robolectric.RuntimeEnvironment;
 
 import io.reactivex.Flowable;
 import io.reactivex.Single;
 
-import static com.edonoxako.easytranslate.core.SupportedLanguage.EN;
-import static com.edonoxako.easytranslate.core.SupportedLanguage.RU;
+import static com.edonoxako.easytranslate.persistance.model.SupportedLanguage.EN;
+import static com.edonoxako.easytranslate.persistance.model.SupportedLanguage.RU;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.when;
 

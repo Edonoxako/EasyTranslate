@@ -4,7 +4,7 @@ import android.content.Context;
 import android.support.annotation.NonNull;
 
 import com.edonoxako.easytranslate.core.LanguageRepository;
-import com.edonoxako.easytranslate.core.SupportedLanguage;
+import com.edonoxako.easytranslate.persistance.model.SupportedLanguage;
 import com.edonoxako.easytranslate.core.model.Language;
 
 import java.util.List;

@@ -3,7 +3,6 @@ package com.edonoxako.easytranslate;
 import com.edonoxako.easytranslate.core.LanguageRepository;
 import com.edonoxako.easytranslate.yandex.api.YandexTranslatorApiMapper;
 import com.edonoxako.easytranslate.yandex.api.model.TranslatedTextDto;
-import com.edonoxako.easytranslate.core.SupportedLanguage;
 import com.edonoxako.easytranslate.core.model.Translation;
 import com.edonoxako.easytranslate.yandex.YandexTranslator;
 
@@ -14,7 +13,7 @@ import java.util.Collections;
 
 import io.reactivex.Single;
 
-import static com.edonoxako.easytranslate.core.SupportedLanguage.*;
+import static com.edonoxako.easytranslate.persistance.model.SupportedLanguage.*;
 import static org.hamcrest.Matchers.is;
 import static org.junit.Assert.assertThat;
 import static org.mockito.ArgumentMatchers.anyString;

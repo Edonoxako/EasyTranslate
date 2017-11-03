@@ -1,7 +1,6 @@
 package com.edonoxako.easytranslate.ui.translator;
 
 import com.arellomobile.mvp.MvpView;
-import com.edonoxako.easytranslate.core.SupportedLanguage;
 import com.edonoxako.easytranslate.core.model.Language;
 
 import java.util.List;

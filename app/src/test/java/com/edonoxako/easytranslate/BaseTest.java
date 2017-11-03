@@ -2,14 +2,14 @@ package com.edonoxako.easytranslate;
 
 import android.support.annotation.NonNull;
 
-import com.edonoxako.easytranslate.core.SupportedLanguage;
+import com.edonoxako.easytranslate.persistance.model.SupportedLanguage;
 import com.edonoxako.easytranslate.core.model.Language;
 import com.edonoxako.easytranslate.core.model.Translation;
 
 import java.util.Collections;
 
-import static com.edonoxako.easytranslate.core.SupportedLanguage.EN;
-import static com.edonoxako.easytranslate.core.SupportedLanguage.RU;
+import static com.edonoxako.easytranslate.persistance.model.SupportedLanguage.EN;
+import static com.edonoxako.easytranslate.persistance.model.SupportedLanguage.RU;
 
 /**
  * Created by eugene on 31.10.17.

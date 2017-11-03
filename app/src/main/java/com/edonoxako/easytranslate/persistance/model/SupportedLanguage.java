@@ -1,4 +1,4 @@
-package com.edonoxako.easytranslate.core;
+package com.edonoxako.easytranslate.persistance.model;
 
 import com.edonoxako.easytranslate.R;
 

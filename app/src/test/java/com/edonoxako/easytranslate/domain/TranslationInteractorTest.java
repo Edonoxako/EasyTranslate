@@ -17,7 +17,7 @@ import org.mockito.junit.MockitoJUnitRunner;
 
 import io.reactivex.Single;
 
-import static com.edonoxako.easytranslate.core.SupportedLanguage.*;
+import static com.edonoxako.easytranslate.persistance.model.SupportedLanguage.*;
 import static org.hamcrest.Matchers.is;
 import static org.junit.Assert.assertThat;
 import static org.mockito.Mockito.eq;

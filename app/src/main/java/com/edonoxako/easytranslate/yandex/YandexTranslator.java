@@ -3,7 +3,6 @@ package com.edonoxako.easytranslate.yandex;
 import com.edonoxako.easytranslate.core.LanguageRepository;
 import com.edonoxako.easytranslate.core.model.Language;
 import com.edonoxako.easytranslate.yandex.api.YandexTranslatorApiMapper;
-import com.edonoxako.easytranslate.core.SupportedLanguage;
 import com.edonoxako.easytranslate.core.model.Translation;
 import com.edonoxako.easytranslate.core.Translator;
 

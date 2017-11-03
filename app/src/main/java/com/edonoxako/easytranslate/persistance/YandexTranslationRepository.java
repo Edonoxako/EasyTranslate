@@ -1,7 +1,6 @@
 package com.edonoxako.easytranslate.persistance;
 
 import com.edonoxako.easytranslate.core.LanguageRepository;
-import com.edonoxako.easytranslate.core.SupportedLanguage;
 import com.edonoxako.easytranslate.core.TranslationRepository;
 import com.edonoxako.easytranslate.core.model.Language;
 import com.edonoxako.easytranslate.core.model.Translation;

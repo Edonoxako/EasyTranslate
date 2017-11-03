@@ -1,11 +1,8 @@
 package com.edonoxako.easytranslate.ui.translator;
 
 import android.content.Context;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.view.View;
 import android.view.inputmethod.InputMethodManager;
-import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
@@ -17,10 +14,7 @@ import com.arellomobile.mvp.MvpAppCompatActivity;
 import com.arellomobile.mvp.presenter.InjectPresenter;
 import com.edonoxako.easytranslate.EasyTranslateApplication;
 import com.edonoxako.easytranslate.R;
-import com.edonoxako.easytranslate.core.SupportedLanguage;
 import com.edonoxako.easytranslate.core.model.Language;
-import com.edonoxako.easytranslate.ui.translator.TranslatorPresenter;
-import com.edonoxako.easytranslate.ui.translator.TranslatorView;
 
 import java.util.List;
 

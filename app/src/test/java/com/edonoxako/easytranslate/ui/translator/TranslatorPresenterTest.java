@@ -15,7 +15,7 @@ import java.util.Collections;
 import io.reactivex.Single;
 import io.reactivex.schedulers.Schedulers;
 
-import static com.edonoxako.easytranslate.core.SupportedLanguage.*;
+import static com.edonoxako.easytranslate.persistance.model.SupportedLanguage.*;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 
