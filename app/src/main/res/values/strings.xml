@@ -1,0 +1,12 @@
+<resources>
+    <string name="app_name">Easy Translate</string>
+
+    <string name="supported_lang_ru">Russian</string>
+    <string name="supported_lang_en">English</string>
+    <string name="supported_lang_fr">French</string>
+    <string name="supported_lang_de">German</string>
+    <string name="supported_lang_sp">Spanish</string>
+    <string name="btn_text_translate">Translate</string>
+    <string name="translated_text_will_appear_there_stub">Translated text will appear there</string>
+    <string name="translation_prefix">Translation:</string>
+</resources>
