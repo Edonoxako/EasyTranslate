@@ -3,7 +3,9 @@ package com.edonoxako.easytranslate.di.module;
 import android.arch.persistence.room.Room;
 import android.content.Context;
 
+import com.edonoxako.easytranslate.core.DefaultSchedulerFactory;
 import com.edonoxako.easytranslate.core.LanguageRepository;
+import com.edonoxako.easytranslate.core.SchedulerFactory;
 import com.edonoxako.easytranslate.core.TranslationRepository;
 import com.edonoxako.easytranslate.core.Translator;
 import com.edonoxako.easytranslate.persistance.EasyTranslateDatabase;

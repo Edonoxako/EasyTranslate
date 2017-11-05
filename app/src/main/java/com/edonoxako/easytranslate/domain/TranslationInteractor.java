@@ -1,6 +1,7 @@
 package com.edonoxako.easytranslate.domain;
 
 import com.edonoxako.easytranslate.core.LanguageRepository;
+import com.edonoxako.easytranslate.core.SchedulerFactory;
 import com.edonoxako.easytranslate.core.TranslationRepository;
 import com.edonoxako.easytranslate.core.Translator;
 import com.edonoxako.easytranslate.core.model.Language;
@@ -8,6 +9,7 @@ import com.edonoxako.easytranslate.core.model.Translation;
 
 import java.util.List;
 
+import io.reactivex.Scheduler;
 import io.reactivex.Single;
 import io.reactivex.schedulers.Schedulers;
 
@@ -40,8 +42,7 @@ public class TranslationInteractor {
         ));
 
         return translator.translate(textToTranslate, translationLanguage)
-                .subscribeOn(Schedulers.io())
-                .doOnEvent((translation, throwable) -> translationRepository.save(translation));
+                .doOnEvent(this::saveToRepository);
     }
 
     public Single<Translation> translate(String textToTranslate, Language originLanguage,
@@ -57,12 +58,15 @@ public class TranslationInteractor {
         ));
 
         return translator.translate(textToTranslate, originLanguage, translationLanguage)
-                .subscribeOn(Schedulers.io())
-                .doOnEvent((translation, throwable) -> translationRepository.save(translation));
+                .doOnEvent(this::saveToRepository);
     }
 
     public Single<List<Language>> getLanguages() {
-        return languageRepository.getAllLanguages()
-                .subscribeOn(Schedulers.io());
+        return languageRepository.getAllLanguages();
+    }
+
+    private void saveToRepository(Translation translation, Throwable throwable) {
+        if (throwable == null && translation != null)
+            translationRepository.save(translation);
     }
 }

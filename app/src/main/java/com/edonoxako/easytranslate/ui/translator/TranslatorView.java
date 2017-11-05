@@ -19,4 +19,5 @@ public interface TranslatorView extends MvpView {
 
     void setTranslatedText(String translatedText);
 
+    void showErrorMessage(String message);
 }

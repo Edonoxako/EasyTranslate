@@ -1,5 +1,6 @@
 package com.edonoxako.easytranslate.domain;
 
+import android.database.sqlite.SQLiteDatabaseCorruptException;
 import android.support.annotation.NonNull;
 
 import com.edonoxako.easytranslate.BaseTest;
@@ -15,11 +16,16 @@ import org.mockito.Mock;
 import org.mockito.Mockito;
 import org.mockito.junit.MockitoJUnitRunner;
 
+import java.net.UnknownHostException;
+
 import io.reactivex.Single;
 
 import static com.edonoxako.easytranslate.persistance.model.SupportedLanguage.*;
+import static org.hamcrest.Matchers.any;
 import static org.hamcrest.Matchers.is;
 import static org.junit.Assert.assertThat;
+import static org.mockito.ArgumentMatchers.any;
+import static org.mockito.Mockito.doThrow;
 import static org.mockito.Mockito.eq;
 import static org.mockito.Mockito.when;
 
@@ -87,6 +93,33 @@ public class TranslationInteractorTest extends BaseTest {
 
         result.test()
                 .assertError(IllegalArgumentException.class);
+    }
+
+    @Test
+    public void testTranslateWhenErrorOccursInNetworkCall() throws Exception {
+        when(translator.translate("Hello", getLanguage(RU)))
+                .thenReturn(Single.error(new UnknownHostException("translate.yandex.net")));
+        doThrow(NullPointerException.class)
+                .when(translationRepository).save(null);
+
+        Single<Translation> result = useCase.translate("Hello", getLanguage(RU));
+
+        result.test()
+                .assertNoValues()
+                .assertError(UnknownHostException.class);
+    }
+
+    @Test
+    public void testTranslateWhenErrorOccursDuringDbOperation() throws Exception {
+        prepareTranslator();
+        doThrow(SQLiteDatabaseCorruptException.class)
+                .when(translationRepository).save(Mockito.any(Translation.class));
+
+        Single<Translation> result = useCase.translate("Hello", getLanguage(RU));
+
+        result.test()
+                .assertNoValues()
+                .assertError(SQLiteDatabaseCorruptException.class);
     }
 
     @NonNull

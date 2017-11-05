@@ -2,12 +2,14 @@ package com.edonoxako.easytranslate.ui.translator;
 
 import com.arellomobile.mvp.InjectViewState;
 import com.arellomobile.mvp.MvpPresenter;
+import com.edonoxako.easytranslate.core.SchedulerFactory;
 import com.edonoxako.easytranslate.core.model.Language;
+import com.edonoxako.easytranslate.core.model.Translation;
 import com.edonoxako.easytranslate.domain.TranslationInteractor;
 
-import javax.inject.Inject;
+import java.util.List;
 
-import io.reactivex.Scheduler;
+import javax.inject.Inject;
 
 /**
  * Created by eugene on 15.10.17.
@@ -16,9 +18,9 @@ import io.reactivex.Scheduler;
 public class TranslatorPresenter extends MvpPresenter<TranslatorView>{
 
     @Inject
-    public TranslationInteractor useCase;
+    public TranslationInteractor interactor;
     @Inject
-    public Scheduler mainThreadScheduler;
+    public SchedulerFactory schedulerFactory;
 
     private Language originLanguage;
     private Language translationLanguage;
@@ -32,17 +34,29 @@ public class TranslatorPresenter extends MvpPresenter<TranslatorView>{
     }
 
     public void translate(String textToTranslate) {
-        useCase.translate(textToTranslate, originLanguage, translationLanguage)
-                .observeOn(mainThreadScheduler)
-                .subscribe(translation ->
-                        getViewState().setTranslatedText(translation.getTranslatedText().get(0))
-                );
+        interactor.translate(textToTranslate, originLanguage, translationLanguage)
+                .subscribeOn(schedulerFactory.io())
+                .observeOn(schedulerFactory.mainThread())
+                .subscribe(this::showTranslation, this::showError);
     }
 
     @Override
     protected void onFirstViewAttach() {
-       useCase.getLanguages()
-               .observeOn(mainThreadScheduler)
-               .subscribe(languages -> getViewState().setSupportedLanguages(languages));
+       interactor.getLanguages()
+               .subscribeOn(schedulerFactory.io())
+               .observeOn(schedulerFactory.mainThread())
+               .subscribe(this::setLanguages);
+    }
+
+    private void setLanguages(List<Language> languages) {
+        getViewState().setSupportedLanguages(languages);
+    }
+
+    private void showTranslation(Translation translation) {
+        getViewState().setTranslatedText(translation.getTranslatedText().get(0));
+    }
+
+    private void showError(Throwable throwable) {
+        getViewState().showErrorMessage(throwable.getMessage());
     }
 }

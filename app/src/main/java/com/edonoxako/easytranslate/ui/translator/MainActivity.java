@@ -9,6 +9,7 @@ import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.Spinner;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.arellomobile.mvp.MvpAppCompatActivity;
 import com.arellomobile.mvp.presenter.InjectPresenter;
@@ -119,6 +120,11 @@ public class MainActivity extends MvpAppCompatActivity implements TranslatorView
     @Override
     public void setTranslatedText(String translatedText) {
         viewTranslatedText.setText(translatedText);
+    }
+
+    @Override
+    public void showErrorMessage(String message) {
+        Toast.makeText(this, message, Toast.LENGTH_LONG).show();
     }
 
     private int getLanguageIndex(Language language) {
